@@ -18,12 +18,19 @@ const app = express()
 
 // --- Security & parsing middleware, in order ---
 app.use(helmet()) // sensible security headers
+// app.use(
+//   cors({
+//     origin: (process.env.CLIENT_ORIGIN || 'https://jobs-trackr.netlify.app/login').split(','),
+//     credentials: true,
+//   }),
+// )
+
 app.use(
   cors({
-    origin: (process.env.CLIENT_ORIGIN || 'https://jobs-trackr.netlify.app/login').split(','),
+    origin: process.env.CLIENT_ORIGIN,
     credentials: true,
-  }),
-)
+  })
+);
 app.use(express.json({ limit: '10kb' })) // small limit - this API doesn't need large payloads
 app.use(mongoSanitize()) // strips $ and . from req.body/query to block NoSQL injection
 
