@@ -20,7 +20,7 @@ const app = express()
 app.use(helmet()) // sensible security headers
 app.use(
   cors({
-    origin: (process.env.CLIENT_ORIGIN || 'http://localhost:5173').split(','),
+    origin: (process.env.CLIENT_ORIGIN || 'https://jobs-trackr.netlify.app/login').split(','),
     credentials: true,
   }),
 )
