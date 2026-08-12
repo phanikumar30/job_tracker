@@ -32,6 +32,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // --- Routes ---
+app.get("/", (req, res) =>{
+  res.send("Server running correctly....!")
+})
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }))
 
 app.use('/api/auth', authRoutes)
